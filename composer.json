@@ -1,8 +1,8 @@
 {
-  "name": "glopgar/monolog-timer-processor",
+  "name": "symfony-bro/monolog-timer-processor",
   "description": "A processor for Monolog that adds timing info to the message contexts",
   "keywords": ["log", "logger", "monolog", "processor", "timer"],
-  "homepage": "https://github.com/glopgar/monolog-timer-processor",
+  "homepage": "https://github.com/symfony-bro/monolog-timer-processor",
   "type": "library",
   "license": "MIT",
   "authors": [
