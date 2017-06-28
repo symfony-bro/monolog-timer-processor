@@ -20,11 +20,19 @@ class TimerProcessor
 
     /**
      * @param int $timerPrecision
-     * @param string $timeFormat
      */
-    public function __construct($timerPrecision = 2)
+    public function __construct($timerPrecision = 6)
     {
-        $this->timerPrecision = 2;
+        $this->timerPrecision = $timerPrecision;
+    }
+
+    public function setMainTimer()
+    {
+        $this->timers['main'] = [
+            'totalTime' => null,
+            'count' => 0,
+            'start' => microtime(true),
+        ];
     }
 
     /**
@@ -34,7 +42,7 @@ class TimerProcessor
     public function __invoke(array $record)
     {
         if (!isset($record['context']['timer']) || !is_array($record['context']['timer'])) {
-            return $record;
+            $record['context']['timer']['main'] = 'start';
         }
 
 
@@ -42,7 +50,7 @@ class TimerProcessor
 
             if ('start' === $timerInfo) {
 
-                if (! isset($this->timers[$timer])) {
+                if (!isset($this->timers[$timer])) {
                     $this->timers[$timer] = array(
                         'totalTime' => null,
                         'count' => 0
