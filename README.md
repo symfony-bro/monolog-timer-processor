@@ -6,6 +6,19 @@ the message contexts.
 
 #### Basic usage
 
+```yml
+services:
+    monolog.processor.timer:
+        class: Glopgar\Monolog\Processor\TimerProcessor
+        calls:
+            - [setMainTimer]
+        tags:
+            - { name: monolog.processor, handler: syslog }
+```
+
+after you must touch ```monolog.processor.timer``` to set ```main``` timer
+
+
 ```php
 
 $logger = new \Monolog\Logger('timer.example');
